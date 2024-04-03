@@ -22,15 +22,15 @@ while True:
     print("Server > ",s.recv(1024).decode())
 
  
-CLIENT: 
- 
+SERVER :
 import socket 
 s=socket.socket() 
-s.connect(('localhost',8000)) 
+s.bind(('localhost',8000)) 
+s.listen(5) 
+c,addr=s.accept() 
 while True: 
-    msg=input("Client > ") 
-    s.send(msg.encode()) 
-    print("Server > ",s.recv(1024).decode())
+    ClientMessage=c.recv(1024).decode() 
+    c.send(ClientMessage.encode())
 ```
 ## OUPUT
 CLIENT :
